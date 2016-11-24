@@ -1,0 +1,178 @@
+@()(implicit messages: Messages, requestHeader: RequestHeader, flash: Flash, session: Session)
+
+<!-- BEGIN SIDEBAR -->
+<div class="page-sidebar-wrapper">
+        <!-- END SIDEBAR -->
+        <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+        <!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+    <div class="page-sidebar navbar-collapse collapse">
+            <!-- BEGIN SIDEBAR MENU -->
+            <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+            <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+            <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+            <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+            <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+            <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+        <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+
+                <!-- 首页 -->
+            <li class="nav-item start active open">
+                <a href="1_my_index.html" class="nav-link nav-toggle">
+                    <i class="icon-home"></i>
+                    <span class="title">首页</span>
+                    <span class="selected"></span>
+                    <span class="arrow open"></span>
+                </a>
+            </li>
+
+                <!-- 患者登记 -->
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-user-following"></i>
+                    <span class="title">患者登记</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+
+                <!-- 分诊台 -->
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="fa fa-h-square"></i>
+                    <span class="title">分诊台</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+
+                <!-- 今日就诊 -->
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="fa fa-stethoscope"></i>
+                    <span class="title">今日就诊</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+
+                <!-- 客户咨询 -->
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="fa fa-commenting"></i>
+                    <span class="title">客户咨询</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+
+                <!-- 门诊发药 -->
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="fa fa-heartbeat"></i>
+                    <span class="title">门诊发药</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+
+                <!-- 字典维护 -->
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="glyphicon glyphicon-book"></i>
+                    <span class="title">字典维护</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+
+                <!-- 统计报表 -->
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-bar-chart"></i>
+                    <span class="title">统计报表</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+
+                <!-- 管理中心 -->
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-briefcase"></i>
+                    <span class="title">管理中心</span>
+                    <span class="arrow"></span>
+                </a>
+
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link ">
+                            <i class="icon-clock"></i>
+                            <span class="title">预约管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link ">
+                            <i class="fa fa-wechat"></i>
+                            <span class="title">微诊所管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link ">
+                            <i class="fa fa-hospital-o"></i>
+                            <span class="title">诊所管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link ">
+                            <i class="fa fa-rmb"></i>
+                            <span class="title">收费管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link ">
+                            <i class="glyphicon glyphicon-folder-close"></i>
+                            <span class="title">库房管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link ">
+                            <i class="fa fa-gavel"></i>
+                            <span class="title">加工管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link ">
+                            <i class="fa fa-medkit"></i>
+                            <span class="title">消毒管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link ">
+                            <i class="icon-user"></i>
+                            <span class="title">客户管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link ">
+                            <i class="fa fa-phone"></i>
+                            <span class="title">随访管理</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link ">
+                            <i class="fa fa-heart"></i>
+                            <span class="title">满意度管理</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+                <!-- 基础设置 -->
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-settings"></i>
+                    <span class="title">基础设置</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+
+        </ul>
+            <!-- END SIDEBAR MENU -->
+    </div>
+        <!-- END SIDEBAR -->
+</div>
+    <!-- END SIDEBAR -->

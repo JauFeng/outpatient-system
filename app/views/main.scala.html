@@ -1,23 +1,273 @@
 @*
-* This template is called from the `index` template. This template
-* handles the rendering of the page header and body tags. It takes
-* two arguments, a `String` for the title of the page and an `Html`
-* object to insert into the body of the page.
+* This is main template which contains all components.
 *@
 @(title: String = "")(content: Html)(implicit messages: Messages, requestHeader: RequestHeader, flash: Flash, session: Session)
 
 <!DOCTYPE html>
+
+<!--[if IE 8]>
+<html lang="en" class="ie8 no-js" /> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9 no-js" /> <![endif]-->
+<!--[if !IE]><!-->
+
 <html lang="en">
+        <!--<![endif]-->
+        <!-- BEGIN HEAD -->
     <head>
-        @* Here's where we render the page title `String`. *@
         <title>@title</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
         <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+
+        <title>@title</title>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <meta content="Outpatient system." name="description"/>
+        <meta content="" name="author"/>
+
+            <!-- BEGIN GLOBAL MANDATORY STYLES -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+        <link href="@routes.Assets.versioned("global/plugins/font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css"/>
+        <link href="@routes.Assets.versioned("global/plugins/simple-line-icons/simple-line-icons.min.css")" rel="stylesheet" type="text/css"/>
+        <link href="@routes.Assets.versioned("global/plugins/bootstrap/css/bootstrap.min.css")" rel="stylesheet" type="text/css"/>
+        <link href="@routes.Assets.versioned("global/plugins/bootstrap-switch/css/bootstrap-switch.min.css")" rel="stylesheet" type="text/css"/>
+            <!-- END GLOBAL MANDATORY STYLES -->
+
+            <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <link href="@routes.Assets.versioned("global/plugins/bootstrap-daterangepicker/daterangepicker.min.css")" rel="stylesheet" type="text/css"/>
+        <link href="@routes.Assets.versioned("global/plugins/morris/morris.css")" rel="stylesheet" type="text/css"/>
+        <link href="@routes.Assets.versioned("global/plugins/fullcalendar/fullcalendar.min.css")" rel="stylesheet" type="text/css"/>
+        <link href="@routes.Assets.versioned("global/plugins/jqvmap/jqvmap/jqvmap.css")" rel="stylesheet" type="text/css"/>
+            <!-- END PAGE LEVEL PLUGINS -->
+
+            <!-- BEGIN THEME GLOBAL STYLES -->
+        <link href="@routes.Assets.versioned("global/css/components-md.min.css")" rel="stylesheet" id="style_components" type="text/css"/>
+        <link href="@routes.Assets.versioned("global/css/plugins-md.min.css")" rel="stylesheet" type="text/css"/>
+            <!-- END THEME GLOBAL STYLES -->
+
+            <!-- BEGIN THEME LAYOUT STYLES -->
+        <link href="@routes.Assets.versioned("layouts/layout2/css/layout.min.css")" rel="stylesheet" type="text/css"/>
+        <link href="@routes.Assets.versioned("layouts/layout2/css/themes/blue.min.css")" rel="stylesheet" type="text/css" id="style_color"/>
+        <link href="@routes.Assets.versioned("layouts/layout2/css/custom.min.css")" rel="stylesheet" type="text/css"/>
+            <!-- END THEME LAYOUT STYLES -->
+
+        <link rel="shortcut icon" href="@routes.Assets.versioned("images/favicon.png")"/>
     </head>
-    <body>
-        @* And here's where we render the `Html` object containing
-        * the page content. *@
-        @content
+        <!-- END HEAD -->
+
+    <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-md">
+        @*
+        * Header template.
+        *@
+        @header()
+
+            <!-- BEGIN HEADER & CONTENT DIVIDER -->
+        <div class="clearfix"></div>
+            <!-- END HEADER & CONTENT DIVIDER -->
+
+            <!-- BEGIN CONTAINER -->
+        <div class="page-container">
+
+            @*
+            * Sidebar template.
+            *@
+            @sidebar()
+
+            @*
+            * Content template.
+            *@
+            @content
+
+            @*
+            * Quick sidebar template.
+            *@
+            @quick_sidebar()
+
+        </div>
+            <!-- END CONTAINER -->
+
+            @*
+            * Footer template.
+            *@
+        @footer()
+
+            <!-- BEGIN CORE PLUGINS -->
+        <script src="@routes.Assets.versioned("global/plugins/jquery.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/bootstrap/js/bootstrap.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/js.cookie.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/jquery-slimscroll/jquery.slimscroll.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/jquery.blockui.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/bootstrap-switch/js/bootstrap-switch.min.js")" type="text/javascript"></script>
+            <!-- END CORE PLUGINS -->
+            <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <script src="@routes.Assets.versioned("global/plugins/moment.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/bootstrap-daterangepicker/daterangepicker.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/morris/morris.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/morris/raphael-min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/counterup/jquery.waypoints.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/counterup/jquery.counterup.min.js")" type="text/javascript"></script>
+
+        <script src="@routes.Assets.versioned("global/plugins/amcharts/amcharts/amcharts.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/amcharts/amcharts/serial.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/amcharts/amcharts/pie.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/amcharts/amcharts/radar.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/amcharts/amcharts/themes/light.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/amcharts/amcharts/themes/patterns.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/amcharts/amcharts/themes/chalk.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/amcharts/ammap/ammap.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/amcharts/ammap/maps/js/worldLow.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/amcharts/amstockcharts/amstock.js")" type="text/javascript"></script>
+
+        <script src="@routes.Assets.versioned("global/plugins/fullcalendar/fullcalendar.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/horizontal-timeline/horizontal-timeline.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/flot/jquery.flot.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/flot/jquery.flot.resize.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/flot/jquery.flot.categories.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/jquery-easypiechart/jquery.easypiechart.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/jquery.sparkline.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/jqvmap/jqvmap/jquery.vmap.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/jqvmap/jqvmap/maps/jquery.vmap.russia.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/jqvmap/jqvmap/maps/jquery.vmap.world.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/jqvmap/jqvmap/maps/jquery.vmap.europe.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/jqvmap/jqvmap/maps/jquery.vmap.germany.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/jqvmap/jqvmap/maps/jquery.vmap.usa.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("global/plugins/jqvmap/jqvmap/data/jquery.vmap.sampledata.js")" type="text/javascript"></script>
+            <!-- END PAGE LEVEL PLUGINS -->
+            <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <script src="@routes.Assets.versioned("global/scripts/app.min.js")" type="text/javascript"></script>
+            <!-- END THEME GLOBAL SCRIPTS -->
+            <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        <script src="@routes.Assets.versioned("pages/scripts/dashboard.min.js")" type="text/javascript"></script>
+            <!-- BEGIN CHART CODE -->
+        <script>
+                var chart = AmCharts.makeChart("chartdiv", {
+                    "type": "serial",
+                    "theme": "light",
+                    "legend": {
+                        "useGraphSettings": true
+                    },
+                    "dataProvider": [{
+                        "week": "Mon.",
+                        "一般": 1,
+                        "很满意": 5,
+                        "满意": 3,
+                        "非常满意": 4,
+                        "差": 0
+                    }, {
+                        "week": "Tue.",
+                        "一般": 1,
+                        "很满意": 2,
+                        "满意": 6,
+                        "非常满意": 5,
+                        "差": 1
+                    }, {
+                        "week": "Wed.",
+                        "一般": 2,
+                        "很满意": 3,
+                        "满意": 1,
+                        "非常满意": 6,
+                        "差": 0
+                    }, {
+                        "week": "Thu.",
+                        "一般": 3,
+                        "很满意": 4,
+                        "满意": 1,
+                        "非常满意": 4,
+                        "差": 2
+                    }, {
+                        "week": "Fri.",
+                        "一般": 5,
+                        "很满意": 1,
+                        "满意": 2,
+                        "非常满意": 7,
+                        "差": 1
+                    }, {
+                        "week": "Sat.",
+                        "一般": 3,
+                        "很满意": 2,
+                        "满意": 1,
+                        "非常满意": 5,
+                        "差": 2
+                    }, {
+                        "week": "Sun.",
+                        "一般": 1,
+                        "很满意": 2,
+                        "满意": 3,
+                        "非常满意": 1,
+                        "差": 1
+                    }],
+                    "valueAxes": [{
+                        "integersOnly": true,
+                        //"maximum": 6,
+                        //"minimum": 1,
+                        //"reversed": true,
+                        "axisAlpha": 0,
+                        "dashLength": 5,
+                        "gridCount": 10,
+                        "position": "left",
+                        "title": "人数(百人)"
+                    }],
+                    "startDuration": 0.5,
+                    "graphs": [{
+                        "balloonText": "一般 in [[category]]: [[value]]",
+                        "bullet": "round",
+                        //"hidden": true,
+                        "title": "一般",
+                        "valueField": "一般",
+                        "fillAlphas": 0
+                    }, {
+                        "balloonText": "很满意 in [[category]]: [[value]]",
+                        "bullet": "round",
+                        "title": "很满意",
+                        "valueField": "很满意",
+                        "fillAlphas": 0
+                    }, {
+                        "balloonText": "满意 in [[category]]: [[value]]",
+                        "bullet": "round",
+                        "title": "满意",
+                        "valueField": "满意",
+                        "fillAlphas": 0
+                    }, {
+                        "balloonText": "非常满意 in [[category]]: [[value]]",
+                        "bullet": "round",
+                        "title": "非常满意",
+                        "valueField": "非常满意",
+                        "fillAlphas": 0
+                    }, {
+                        "balloonText": "差 in [[category]]: [[value]]",
+                        "bullet": "round",
+                        "title": "差",
+                        "valueField": "差",
+                        "fillAlphas": 0
+                    }],
+                    "chartCursor": {
+                        "cursorAlpha": 0,
+                        "zoomable": false
+                    },
+                    "categoryField": "week",
+                    "categoryAxis": {
+                        "gridPosition": "start",
+                        "axisAlpha": 0,
+                        "fillAlpha": 0.05,
+                        "fillColor": "#000000",
+                        "gridAlpha": 0,
+                        "position": "top"
+                    },
+                    "export": {
+                        "enabled": true,
+                        "position": "bottom-right"
+                    }
+                });
+        </script>
+            <!-- END CHART CODE -->
+            <!-- END PAGE LEVEL SCRIPTS -->
+            <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <script src="@routes.Assets.versioned("layouts/layout2/scripts/layout.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("layouts/layout2/scripts/demo.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("layouts/global/scripts/quick-sidebar.min.js")" type="text/javascript"></script>
+        <script src="@routes.Assets.versioned("layouts/global/scripts/quick-nav.min.js")" type="text/javascript"></script>
+            <!-- END THEME LAYOUT SCRIPTS -->
     </body>
 </html>
